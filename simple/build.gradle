@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        //applicationId "com.chanling.haohai"
+        applicationId "com.maishuo.tingshuohenhaowan"
+        minSdkVersion 21//oaid支持最小版本是21,所以修改
+        targetSdkVersion 28
+        versionCode 200
+        versionName "2.0.0"
+        testInstrumentationRunner "android.support.init.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86', 'arm64-v8a', 'x86_64', 'armeabi'
+        }
+
+        packagingOptions {
+            doNotStrip "*/armeabi-v7a/*.so"
+            doNotStrip "*/x86/*.so"
+            doNotStrip "*/arm64-v8a/*.so"
+            doNotStrip "*/x86_64/*.so"
+            doNotStrip "armeabi.so"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('tingshuohenhaowan.jks')
+            keyAlias '听说很好玩'
+            keyPassword 'Tingshuohenhaowan16888'
+            storePassword 'Tingshuohenhaowan16888'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        debug {
+            storeFile file('tingshuohenhaowan.jks')
+            keyAlias '听说很好玩'
+            keyPassword 'Tingshuohenhaowan16888'
+            storePassword 'Tingshuohenhaowan16888'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        /*release {
+            keyAlias 'paultang'
+            keyPassword 'haohaidevelopthc2019'
+            storeFile file('test.jks')
+            storePassword 'haohaidevelopthc2019'
+        }
+        debug {
+            keyAlias 'paultang'
+            keyPassword 'haohaidevelopthc2019'
+            storeFile file('test.jks')
+            storePassword 'haohaidevelopthc2019'
+        }*/
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //ad sdk need implementation start
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'com.github.bumptech.glide:annotations:4.12.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //添加依赖模块
+    api project(':adlibrary')
+    //implementation(name: 'com.corpize.sdk.modads.test', ext: 'aar')
+    //导入三方依赖
+    implementation(name: 'Baidu_MobAds_SDK-release_v9.12', ext: 'aar')
+    implementation(name: 'GDTSDK.unionNormal.4.370.1240', ext: 'aar')
+    implementation(name: 'kssdk-ad-3.3.10.2', ext: 'aar')
+    implementation(name: 'open_ad_sdk', ext: 'aar')
+    implementation(name: 'oaid_sdk_1.0.25', ext: 'aar')
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //ad sdk need implementation end
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout_video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/splash_ad_rl_paly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <!--视频播放控件-->
+        <com.corpize.sdk.mobads.video.MyTextureView
+            android:id="@+id/splash_ad_textureview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <!--最上方预览图片-->
+        <ImageView
+            android:id="@+id/splash_ad_iv_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#000000"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+    <!--进度圈-->
+    <ProgressBar
+        android:id="@+id/splash_ad_loading"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminateDrawable="@drawable/qcad_float_loading"
+        android:visibility="visible" />
+
+    <!--倒计时按钮-->
+    <TextView
+        android:id="@+id/splash_ad_time_down"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/qcad_shape_downtime"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:visibility="invisible" />
+
+    <!--关闭按钮-->
+    <ImageView
+        android:id="@+id/splash_ad_iv_close"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/qcad_shape_close_background"
+        android:padding="3dp"
+        android:src="@drawable/qcad_icon_close_voice_trans"
+        android:visibility="gone" />
+
+    <!--刷新按钮-->
+    <TextView
+        android:id="@+id/splash_ad_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/qcad_shape_refresh"
+        android:paddingLeft="15dp"
+        android:paddingTop="7dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="7dp"
+        android:text="刷新重试"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+</RelativeLayout>
+

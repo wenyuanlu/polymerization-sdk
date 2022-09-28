@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+
+//TODO:在此处修改对应的版本号,打包输出的名称要用到
+String VERSION = "2.0.1"
+int VERSIONCODE = 201
+String BASENAME = "Qc_Without_V"
+String TIME = "_" + releaseTime()
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.init.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'proguard-rules.pro'//一行代码搞定混淆
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    packagingOptions {
+        //防止jni包重复编译，在这里配置 包含 或者 不包含
+        //exclude 'lib/arm64-v8a/librsjni_androidx.so'
+        //exclude 'lib/arm64-v8a/librsjni.so'
+        //exclude 'lib/arm64-v8a/libRSSupport.so'
+        //exclude 'lib/armeabi-v7a/librsjni_androidx.so'
+        //exclude 'lib/armeabi-v7a/librsjni.so'
+        //exclude 'lib/armeabi-v7a/libRSSupport.so'
+        //exclude 'lib/x86/librsjni_androidx.so'
+        //exclude 'lib/x86/librsjni.so'
+        //exclude 'lib/x86/libRSSupport.so'
+        //exclude 'lib/x86_64/librsjni_androidx.so'
+        //exclude 'lib/x86_64/librsjni.so'
+        //exclude 'lib/x86_64/libRSSupport.so'
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compileOnly 'androidx.appcompat:appcompat:1.2.0'
+    compileOnly 'androidx.recyclerview:recyclerview:1.1.0'
+
+    compileOnly 'com.google.code.gson:gson:2.8.6'
+    compileOnly 'com.github.bumptech.glide:glide:4.12.0'
+    compileOnly 'com.github.bumptech.glide:annotations:4.12.0'
+    compileOnly 'com.github.bumptech.glide:okhttp3-integration:4.12.0'
+    compileOnly 'com.squareup.okhttp3:okhttp:4.9.1'
+
+    compileOnly(name: 'oaid_sdk_1.0.25', ext: 'aar')
+
+    compileOnly(name: 'Baidu_MobAds_SDK-release_v9.12', ext: 'aar')
+    compileOnly(name: 'GDTSDK.unionNormal.4.370.1240', ext: 'aar')
+    compileOnly(name: 'open_ad_sdk', ext: 'aar')
+    compileOnly(name: 'kssdk-ad-3.3.10.2', ext: 'aar')
+}
+
+//修改aar名字+将指定aar生成的地方
+task makeAar(type: Copy) {
+    from 'build/outputs/aar/Adlibrary-release.aar'
+    into 'src/main/outter/aar/' + releaseTime()     //aar包输出路径
+    rename { BASENAME + VERSION + TIME + '.aar' }   //最终aar包的名称
+}
+makeAar.dependsOn(build) //必须写的配置
+
+static def releaseTime() {
+    return new Date().format("MMdd_HHmmss", TimeZone.getTimeZone("GMT+08:00"))
+}

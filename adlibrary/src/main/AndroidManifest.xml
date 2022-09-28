@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.corpize.sdk">
+
+    <application>
+
+        <!--qc-->
+        <activity
+            android:name=".mobads.view.QcAdDetialActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/QCAd_AppTheme" />
+
+        <activity
+            android:name=".mobads.view.QcAdVideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/QCAd_AppVideoTheme" />
+    </application>
+
+</manifest>

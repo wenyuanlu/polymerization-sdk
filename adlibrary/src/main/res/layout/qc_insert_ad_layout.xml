@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#00FFFFFF">
+
+    <!--webview展示的图片-->
+    <FrameLayout
+        android:id="@+id/qc_insert_express"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/qc_insert_close1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/qc_insert_express"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/qcad_dislike_icon" />
+
+    <TextView
+        android:id="@+id/qc_insert_ad_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/qc_insert_express"
+        android:layout_alignBottom="@+id/qc_insert_express"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="#36424242"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:text="广告"
+        android:textColor="#7EF0F0F0" />
+
+    <!--原生展示的view-->
+    <ImageView
+        android:id="@+id/qc_insert_ad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/qc_insert_close2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/qc_insert_ad"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/qcad_dislike_icon" />
+
+    <TextView
+        android:id="@+id/qc_insert_ad_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/qc_insert_express"
+        android:layout_alignBottom="@+id/qc_insert_express"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="#36424242"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:text="广告"
+        android:textColor="#7EF0F0F0" />
+
+</RelativeLayout>
